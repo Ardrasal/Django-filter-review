@@ -7,3 +7,4 @@ class SnippetFilter(django_filters.FilterSet):
     class Meta:
         model = Snippet
         fields = ('title', 'body', 'created')
+    
