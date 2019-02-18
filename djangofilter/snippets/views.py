@@ -5,10 +5,18 @@ from .models import Snippet
 from django.views import View
 from django.views.generic import ListView, DetailView
 
+from .filters import SnippetFilter
+
 
 class SnippetListView(ListView):
     model = Snippet
     template_name = 'snippets/snippet_list.html'
+
+# added for filters
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["filter"] = SnippetFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 
 class SnippetDetailView(DetailView):
