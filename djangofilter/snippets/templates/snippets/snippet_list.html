@@ -5,7 +5,12 @@
 
 {% block content %}
 
-{{ filter.form|bootstrap }}
+<div class="container">
+
+<form method="GET">
+  {{ filter.form|bootstrap }}
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
 <ul>
   {% for snippet in filter.qs %}
@@ -14,5 +19,7 @@
     </li>
   {% endfor %}
 </ul>
+
+</div>
 
 {% endblock content %}
